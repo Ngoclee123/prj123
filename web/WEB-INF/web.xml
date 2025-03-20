@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    <filter>
+        <filter-name>RoleFiltera</filter-name>
+        <filter-class>filter.RoleFiltera</filter-class>
+    </filter>
+    
+    <!-- Ánh xạ Filter -->
+    <filter-mapping>
+        <filter-name>RoleFiltera</filter-name>
+        <url-pattern>/admin/adminpage.jsp</url-pattern>
+        <url-pattern>/seller/sellerpage.jsp</url-pattern>
+     
+        <url-pattern>/SellerServlet</url-pattern>
+        <url-pattern>/AdminServlet</url-pattern>
+
+        
+
+   
+
+    </filter-mapping>
+    <listener>  
+        <listener-class>ultils.ActiveUserListener</listener-class>
+    </listener>
+    <session-config>
+        <session-timeout>30</session-timeout> <!-- 30 phút -->
+    </session-config>
+    <servlet>
+        <servlet-name>ajaxServlet</servlet-name>
+        <servlet-class>controller.com.vnpay.common.ajaxServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ajaxServlet</servlet-name>
+        <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>VnpayReturn</servlet-name>
+        <servlet-class>controller.com.vnpay.common.VnpayReturn</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VnpayReturn</servlet-name>
+        <url-pattern>/vnpayReturn</url-pattern>    
+    </servlet-mapping>
+    
+    
+    
+</web-app>
